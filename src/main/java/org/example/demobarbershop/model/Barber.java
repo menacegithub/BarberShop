@@ -16,18 +16,30 @@ public class Barber {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
     @Column(nullable = false)
     private String name;
+
     @Column(nullable = false)
     private String specialization;
+
     @Column(nullable = false)
     private String phoneNumber;
+
     @Column(nullable = false)
     private Integer experience;
+
     @Column(nullable = false)
     private Double rating;
+
     @Column(nullable = false)
     public LocalDateTime availability;
+
+    @OneToMany(mappedBy = "barber", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Appointment> appointments;
+
+    @OneToMany(mappedBy = "barber", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Schedule> schedules;
 
 
 

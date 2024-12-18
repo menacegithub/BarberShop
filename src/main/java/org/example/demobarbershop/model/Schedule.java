@@ -16,12 +16,18 @@ public class Schedule {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
     @ManyToOne
     private Barber barber;
+
     //dayOfWeek (Enum) - Haftaning kuni (MONDAY, TUESDAY va hokazo).
     @Column(nullable = false)
     private LocalTime startTime;
+
     @Column(nullable = false)
     private LocalTime endTime;
+
+    @Column(nullable = false)
+    private boolean isAvailable;
 
 }

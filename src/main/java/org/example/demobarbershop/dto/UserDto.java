@@ -1,5 +1,8 @@
 package org.example.demobarbershop.dto;
 
-public class UserDto
-{
+import lombok.Data;
+
+@Data
+public class UserDto {
+
 }

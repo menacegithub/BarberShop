@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.example.demobarbershop.model.entity.PaymentMethod;
+import org.example.demobarbershop.model.entity.PaymentStatus;
 
 @Data
 @AllArgsConstructor
@@ -17,7 +19,7 @@ public class Payment {
     private Appointment appointment;
     @Column(nullable = false)
     private Double amount;
-//    paymentMethod (Enum) - To'lov usuli (CARD, CASH).
-//    paymentStatus (Enum) - To'lov holati (PENDING, PAID, FAILED).
+    private PaymentMethod paymentMethod;
+    private PaymentStatus paymentStatus;
 
 }

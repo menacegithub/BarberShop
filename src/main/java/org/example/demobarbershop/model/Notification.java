@@ -15,12 +15,16 @@ public class Notification {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
     @ManyToOne
     private User recipient;
+
     @Column(nullable = false)
     private String message;
+
     @Column(nullable = false)
     private LocalDateTime timestamp;
+
 //  status (Enum) - Xabarnoma holati (SENT, READ).
 
 }
