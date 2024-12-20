@@ -1,4 +1,7 @@
 package org.example.demobarbershop.repository;
 
-public interface PaymentRepository {
+import org.example.demobarbershop.model.Payment;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface PaymentRepository extends JpaRepository <Payment, Integer> {
 }
