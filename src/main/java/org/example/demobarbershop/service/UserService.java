@@ -1,5 +1,6 @@
 package org.example.demobarbershop.service;
 
+import org.example.demobarbershop.dto.UserDto;
 import org.example.demobarbershop.model.Result;
 import org.example.demobarbershop.model.User;
 import org.example.demobarbershop.repository.UserRepository;
@@ -25,12 +26,12 @@ public class UserService {
     }
 
     // Create new user
-    public User create(User user) {
+    public User create(UserDto user) {
         return userRepository.save(user);
     }
 
     // Update existing user
-    public Result update(Integer id, User updatedUser) {
+    public Result update(Integer id, UserDto updatedUser) {
         User existingUser = userRepository.findById(id).orElse(null);
         if (existingUser == null) {
             return new Result(false, "User not found");

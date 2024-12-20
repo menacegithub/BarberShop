@@ -14,23 +14,19 @@ public class ServiceeService {
     @Autowired
     private ServiceeRepository serviceRepository;
 
-    // Get all services
     public List<Servicee> getAll() {
         return serviceRepository.findAll();
     }
 
-    // Get service by ID
     public Servicee getById(Integer id) {
         return serviceRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Servicee not found with id: " + id));
     }
 
-    // Create a new service
     public Servicee create(Servicee service) {
         return serviceRepository.save(service);
     }
 
-    // Update an existing service
     public Result update(Integer id, Servicee newServicee) {
         Optional<Servicee> optionalServicee = serviceRepository.findById(id);
         if (optionalServicee.isPresent()) {
@@ -44,7 +40,6 @@ public class ServiceeService {
         return new Result(false, "Servicee not found");
     }
 
-    // Delete a service
     public Result delete(Integer id) {
         if (serviceRepository.existsById(id)) {
             serviceRepository.deleteById(id);
