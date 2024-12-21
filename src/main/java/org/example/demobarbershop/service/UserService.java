@@ -26,9 +26,7 @@ public class UserService {
     }
 
     // Create new user
-    public User create(UserDto user) {
-        return userRepository.save(user);
-    }
+
 
     // Update existing user
     public Result update(Integer id, UserDto updatedUser) {
