@@ -22,8 +22,16 @@ public class ReviewService {
         return reviewRepository.findById(id).orElse(null);
     }
 
-    public Review create(Review review) {
-        return reviewRepository.save(review);
+    public Result create(Review review) {
+        if (review == null || review.getUser() == null || review.getRating() == null || review.getComment() == null) {
+            return new Result(false, "Review data is incomplete");
+        }
+        Review review1 = new Review();
+        review1.setUser(review.getUser());
+        review1.setRating(review.getRating());
+        review1.setComment(review.getComment());
+        reviewRepository.save(review);
+        return new Result(true, "Review created");
     }
 
     public Result update(Integer id, Review updatedReview) {

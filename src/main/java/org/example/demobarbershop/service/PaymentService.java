@@ -22,8 +22,14 @@ public class PaymentService {
         return paymentRepository.findById(id).orElse(null);
     }
 
-    public Payment create(Payment payment) {
-        return paymentRepository.save(payment);
+    public Result create(Payment payment) {
+        if (payment == null) {
+            return new Result(false, "Payment data is incomplete");
+        }
+        Payment payment1 = new Payment();
+        payment1.setAmount(payment.getAmount());
+        paymentRepository.save(payment);
+        return new Result(true, "Payment created");
     }
 
     public Result update(Integer id, Payment updatedPayment) {
