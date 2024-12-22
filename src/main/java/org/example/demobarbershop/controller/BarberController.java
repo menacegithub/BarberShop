@@ -25,7 +25,7 @@ public class BarberController {
     }
 
     @PostMapping
-    public Barber create(@RequestBody Barber barber) {
+    public Result create(@RequestBody Barber barber) {
         return barberService.create(barber);
     }
 

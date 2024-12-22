@@ -29,7 +29,7 @@ public class ScheduleController {
     }
 
     @PostMapping
-    public Schedule create(@RequestBody Schedule schedule) {
+    public Result create(@RequestBody Schedule schedule) {
         return scheduleService.create(schedule);
     }
 

@@ -21,15 +21,16 @@ public class BarberService {
         return barberRepository.findById(id).orElse(null);
     }
 
-    public Barber create(Barber barber) {
+    public Result create(Barber barber) {
         if (barber == null || barber.getName() == null || barber.getSpecialization() == null) {
-            throw new IllegalArgumentException("Barber data is incomplete");
+            return new Result(false,"Barber data is incomplete");
         }
         Barber barber1 = new Barber();
         barber1.setName(barber.getName());
         barber1.setSpecialization(barber.getSpecialization());
         barber1.setPhoneNumber(barber.getPhoneNumber());
-        return barberRepository.save(barber);
+        barberRepository.save(barber);
+        return new Result(true,"Barber created");
     }
 
     public Result update(Integer id, Barber updatedBarber) {

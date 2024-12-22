@@ -26,7 +26,7 @@ public class ServiceeController {
     }
 
     @PostMapping
-    public Servicee create(@RequestBody Servicee service) {
+    public Result create(@RequestBody Servicee service) {
         return serviceService.create(service);
     }
 
