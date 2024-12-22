@@ -27,6 +27,12 @@ public class ScheduleService {
 
     // Create a new schedule
     public Schedule create(Schedule schedule) {
+        if (schedule == null || schedule.getBarber() == null || schedule.getStartTime() == null || schedule.getEndTime() == null) {
+            throw new IllegalArgumentException("Schedule data is incomplete");
+        }
+        schedule.setBarber(schedule.getBarber());
+        schedule.setStartTime(schedule.getStartTime());
+        schedule.setEndTime(schedule.getEndTime());
         return scheduleRepository.save(schedule);
     }
 
