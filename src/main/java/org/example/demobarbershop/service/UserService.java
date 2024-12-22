@@ -26,6 +26,17 @@ public class UserService {
     }
 
     // Create new user
+    public User create(UserDto userDto) {
+        if (userDto == null || userDto.getUsername() == null || userDto.getPhoneNumber() == null) {
+            throw new IllegalArgumentException("User data is incomplete");
+        }
+        User user = new User();
+        user.setUsername(userDto.getUsername());
+        user.setPassword(userDto.getPassword());
+        user.setPhoneNumber(userDto.getPhoneNumber());
+        user.setEmail(userDto.getEmail());
+        return userRepository.save(user);
+    }
 
 
     // Update existing user
