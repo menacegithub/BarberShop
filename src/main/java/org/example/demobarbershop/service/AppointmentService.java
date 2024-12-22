@@ -21,8 +21,19 @@ public class AppointmentService {
         return appointmentRepository.findById(id).orElse(null);
     }
 
-    public Appointment create(Appointment appointment) {
-        return appointmentRepository.save(appointment);
+    public Result create(Appointment appointment) {
+        if (appointment == null || appointment.getUserId() == null || appointment.getServicee() == null) {
+            return new Result(false, "Appointment data is incomplete");
+        }
+
+        Appointment newAppointment = new Appointment();
+        newAppointment.setAppointmentTime(appointment.getAppointmentTime());
+        newAppointment.setDate(appointment.getDate());
+        newAppointment.setStatus(appointment.getStatus());
+        newAppointment.setServicee(appointment.getServicee());
+        appointmentRepository.save(newAppointment);
+        return new Result(true, "Appointment created");
+
     }
 
     public Result update(Integer id, Appointment updatedAppointment) {

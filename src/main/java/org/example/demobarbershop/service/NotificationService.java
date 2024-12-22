@@ -22,8 +22,17 @@ public class NotificationService {
         return notificationRepository.findById(id).orElse(null);
     }
 
-    public Notification create(Notification notification) {
-        return notificationRepository.save(notification);
+    public Result create(Notification notification) {
+
+        if (notification == null || notification.getMessage() == null ) {
+            return new Result(false, "Notification data is incomplete");
+        }
+
+        Notification newNotification = new Notification();
+        newNotification.setMessage(notification.getMessage());
+        newNotification.setTimestamp(notification.getTimestamp()); notificationRepository.save(notification);
+        return new Result(true, "Notification created");
+
     }
 
     public Result update(Integer id, Notification updatedNotification) {
