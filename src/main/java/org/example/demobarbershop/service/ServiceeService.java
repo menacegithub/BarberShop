@@ -23,8 +23,17 @@ public class ServiceeService {
                 .orElseThrow(() -> new IllegalArgumentException("Servicee not found with id: " + id));
     }
 
-    public Servicee create(Servicee service) {
-        return serviceRepository.save(service);
+    public Result create(Servicee service) {
+        if (service == null || service.getName() == null || service.getPrice() == null) {
+            return new Result(false, "Service data is incomplete");
+        }
+
+        Servicee servicee = new Servicee();
+        servicee.setName(service.getName());
+        servicee.setPrice(service.getPrice());
+        servicee.setDuration(service.getDuration());
+        serviceRepository.save(servicee);
+        return new Result(true, "Service created");
     }
 
     public Result update(Integer id, Servicee newServicee) {
