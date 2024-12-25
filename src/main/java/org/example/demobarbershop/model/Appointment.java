@@ -21,7 +21,7 @@ public class Appointment {
     private LocalDateTime appointmentTime;
 
     @ManyToOne
-    private User userId;
+    private User user;
 
     @ManyToOne
     private Barber barber;

@@ -28,6 +28,6 @@ public class Servicee {
     @Column(nullable = false)
     private Integer duration;
 
-    @OneToMany(mappedBy = "service", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany
     private List<Appointment> appointments;
 }

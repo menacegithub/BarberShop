@@ -22,7 +22,7 @@ public class AppointmentService {
     }
 
     public Result create(Appointment appointment) {
-        if (appointment == null || appointment.getUserId() == null || appointment.getServicee() == null) {
+        if (appointment == null) {
             return new Result(false, "Appointment data is incomplete");
         }
 
